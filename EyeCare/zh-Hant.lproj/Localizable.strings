@@ -1,0 +1,64 @@
+/* Menu Bar */
+"app_name" = "護眼助手";
+"menu_enable_reminder" = "啟用護眼提醒";
+"menu_quit" = "退出護眼助手";
+
+/* Long Rest Settings */
+"long_rest_settings" = "長休息設置";
+"long_rest_interval" = "間隔時間:";
+"long_rest_duration" = "休息時長:";
+
+/* Short Rest Settings */
+"short_rest_settings" = "短休息設置";
+"short_rest_enable" = "啟用短休息";
+"short_rest_duration" = "休息時長:";
+"short_rest_count" = "每次長休息內次數:";
+
+/* Activity Detection */
+"activity_detection" = "用戶活動檢測";
+"pause_detection_time" = "無活動暫停時間:";
+"stop_detection_time" = "無活動停止時間:";
+
+/* Time Units */
+"minutes" = "分鐘";
+"seconds" = "秒";
+"times" = "次";  // 新增
+
+/* Buttons */
+"test_long_rest" = "測試長休息";
+"test_short_rest" = "測試短休息";
+"skip_this_time" = "跳過本次";
+"short_break" = "短休息";
+
+/* Rest View */
+"long_rest_title" = "長休息時間";
+"short_rest_title" = "短休息時間";
+
+/* Status Bar Settings */
+"status_bar_settings" = "狀態欄設置";
+"status_bar_countdown" = "顯示倒計時";
+
+/* Background Settings */
+"background_settings" = "背景設置";
+"click_image_to_change_background" = "點擊圖片更換背景";
+"select_image" = "選擇圖片";
+"done" = "完成";
+
+
+
+/* Rest View Settings */
+"rest_view_settings" = "休息界面設置";
+"show_quotes" = "顯示名言";
+
+/* Application Status */
+"disabled" = "已禁用";
+"stop" = "停止";
+"pause" = "暫停";
+
+
+/* Custom Quotes Settings */
+"custom_quotes_settings" = "自定義名言設置";
+"custom_quotes_description" = "每行輸入一條名言。每條名言會在休息期間隨機顯示。";
+"save" = "保存";
+"cancel" = "取消";
+

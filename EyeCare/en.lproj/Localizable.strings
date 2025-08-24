@@ -1,0 +1,62 @@
+/* Menu Bar */
+"app_name" = "Eye Care";
+"menu_enable_reminder" = "Enable Eye Care Reminder";
+"menu_quit" = "Quit Eye Care";
+
+/* Long Rest Settings */
+"long_rest_settings" = "Long Rest Settings";
+"long_rest_interval" = "Interval:";
+"long_rest_duration" = "Duration:";
+
+/* Short Rest Settings */
+"short_rest_settings" = "Short Rest Settings";
+"short_rest_enable" = "Enable Short Rest";
+"short_rest_duration" = "Duration:";
+"short_rest_count" = "Count per long rest:";
+
+/* Activity Detection */
+"activity_detection" = "Activity Detection";
+"pause_detection_time" = "Pause after inactive:";
+"stop_detection_time" = "Stop after inactive:";
+
+/* Time Units */
+"minutes" = "minutes";
+"seconds" = "seconds";
+"times" = "times";  // 新增
+
+/* Buttons */
+"test_long_rest" = "Test Long Rest";
+"test_short_rest" = "Test Short Rest";
+"skip_this_time" = "Skip This Time";
+"short_break" = "Short Break";
+
+/* Rest View */
+"long_rest_title" = "Long Rest Time";
+"short_rest_title" = "Short Rest Time";
+
+/* Status Bar Settings */
+"status_bar_settings" = "Status Bar Settings";
+"status_bar_countdown" = "Show Countdown";
+
+/* Background Settings */
+"background_settings" = "Background Settings";
+"click_image_to_change_background" = "Click on images to change background";
+"select_image" = "Select Image";
+"done" = "Done";
+
+
+/* Rest View Settings */
+"rest_view_settings" = "Rest View Settings";
+"show_quotes" = "Show Quotes";
+
+/* Application Status */
+"disabled" = "Disabled";
+"stop" = "Stop";
+"pause" = "Pause";
+
+/* Custom Quotes Settings */
+"custom_quotes_settings" = "Custom Quotes Settings";
+"custom_quotes_description" = "Enter one quote per line. Each quote will be displayed randomly during rest periods.";
+"save" = "Save";
+"cancel" = "Cancel";
+
