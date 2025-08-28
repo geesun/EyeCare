@@ -30,28 +30,25 @@ class QuotesManager {
         return quotes.randomElement()
     }
     
-    // 获取当前系统语言代码
     func getCurrentLanguageCode() -> String {
-        // 获取当前语言，兼容不同版本的 macOS
-        #if os(macOS) && swift(>=5.7)
-        let languageCode = Locale.current.language.languageCode?.identifier ?? "en"
-        #else
-        let languageCode = Locale.current.languageCode ?? "en"
-        #endif
+        let languageCode: String
         
-        // 标准化语言代码
+        if #available(macOS 13.0, *) {
+            // Locale.LanguageCode 没有 rawValue，用 description 转字符串
+            languageCode = Locale.current.language.languageCode.map { String(describing: $0) } ?? "en"
+        } else {
+            languageCode = Locale.current.languageCode ?? "en"
+        }
+        
         return normalizeLanguageCode(languageCode)
     }
-    
-    // 标准化语言代码
+
     private func normalizeLanguageCode(_ code: String) -> String {
-        // 处理中文的不同变体
-        if code.hasPrefix("zh-Hans") || code.hasPrefix("zh_CN") {
+        if code.starts(with: "zh-Hans") || code.starts(with: "zh-CN") || code == "zh" {
             return "zh-Hans"
-        } else if code.hasPrefix("zh-Hant") || code.hasPrefix("zh_TW") {
+        } else if code.starts(with: "zh-Hant") || code.starts(with: "zh-TW") {
             return "zh-Hant"
         } else {
-            // 默认返回英语
             return "en"
         }
     }
