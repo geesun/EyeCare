@@ -91,12 +91,9 @@ struct QuotesConfigView: View {
          VStack(spacing: 20) {
              // 标题和提示
              VStack(spacing: 8) {
-                 Text(LocalizedStrings.customQuotesSettings)
-                     .font(.title2)
-                     .fontWeight(.bold)
                  
                  Text(LocalizedStrings.customQuotesDescription)
-                     .font(.caption)
+                     .font(.title3)
                      .foregroundColor(.secondary)
                      .multilineTextAlignment(.center)
                      .fixedSize(horizontal: false, vertical: true)  // 固定大小以避免布局问题

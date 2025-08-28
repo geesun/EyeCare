@@ -1,7 +1,7 @@
 /* Menu Bar */
 "app_name" = "Eye Care";
-"menu_enable_reminder" = "Enable Eye Care Reminder";
-"menu_quit" = "Quit Eye Care";
+"menu_enable_reminder" = "Enable EyeCare";
+"menu_quit" = "Quit EyeCare";
 
 /* Long Rest Settings */
 "long_rest_settings" = "Long Rest Settings";
@@ -12,12 +12,12 @@
 "short_rest_settings" = "Short Rest Settings";
 "short_rest_enable" = "Enable Short Rest";
 "short_rest_duration" = "Duration:";
-"short_rest_count" = "Count per long rest:";
+"short_rest_count" = "Short Rest Count:";
 
 /* Activity Detection */
 "activity_detection" = "Activity Detection";
-"pause_detection_time" = "Pause after inactive:";
-"stop_detection_time" = "Stop after inactive:";
+"pause_detection_time" = "Pause After Inactive:";
+"stop_detection_time" = "Stop After Inactive:";
 
 /* Time Units */
 "minutes" = "minutes";
@@ -40,7 +40,7 @@
 
 /* Background Settings */
 "background_settings" = "Background Settings";
-"click_image_to_change_background" = "Click on images to change background";
+"click_image_to_change_background" = "Click image to change background(random from 8).";
 "select_image" = "Select Image";
 "done" = "Done";
 

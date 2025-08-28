@@ -129,6 +129,19 @@ struct EyeCareMenuView: View {
                 
                 // 只有当短休息开关启用时才显示短休息配置
                 if manager.shortRestEnabled {
+                    // 短休息次数 - 使用结构化选项
+                    HStack {
+                        Text(LocalizedStrings.shortRestCount)
+                        Spacer()
+                        Picker("", selection: $manager.shortRestCount) {
+                            ForEach(shortCountOptions, id: \.count) { option in
+                                Text(option.label).tag(option.count)
+                            }
+                        }
+                        .pickerStyle(MenuPickerStyle())
+                        .frame(width: 120)
+                    }
+                    
                     // 短休息时长 - 使用结构化选项
                     HStack {
                         Text(LocalizedStrings.shortRestDuration)
@@ -142,18 +155,6 @@ struct EyeCareMenuView: View {
                         .frame(width: 120)
                     }
                     
-                    // 短休息次数 - 使用结构化选项
-                    HStack {
-                        Text(LocalizedStrings.shortRestCount)
-                        Spacer()
-                        Picker("", selection: $manager.shortRestCount) {
-                            ForEach(shortCountOptions, id: \.count) { option in
-                                Text(option.label).tag(option.count)
-                            }
-                        }
-                        .pickerStyle(MenuPickerStyle())
-                        .frame(width: 120)
-                    }
                 }
                 
                 Divider()

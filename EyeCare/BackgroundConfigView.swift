@@ -118,11 +118,13 @@ struct BackgroundConfigView: View {
         var body: some View {
             VStack(spacing: 12) {
                 // 提示文字
+                
                 Text(LocalizedStrings.clickImageToChangeBackground)
                     .font(.title3)
-                    .fontWeight(.medium)
                     .foregroundColor(.secondary)
-                    .padding(.top, 8)
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)  // 固定大小以避免布局问题
+                
                 
                 // 8张图片网格
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: 4), spacing: 12) {
