@@ -114,6 +114,8 @@ class EyeCareManager: ObservableObject {
     
     // 全局事件监控器
     private var globalEventMonitor: Any?
+    // 锁屏检测相关
+    private var lockScreenObserver: NSObjectProtocol?
     
     // 调试模式标志
     private let isDebugMode = false
@@ -130,6 +132,7 @@ class EyeCareManager: ObservableObject {
         loadSettingsFromConfig()
         nextRestSeconds = calculateNextRestTime()
         setupGlobalEventMonitoring()
+        setupScreenLockMonitoring();
         startMainTimer()
     }
     
@@ -443,10 +446,46 @@ class EyeCareManager: ObservableObject {
         }
     }
     
+    private func setupScreenLockMonitoring() {
+        let center = DistributedNotificationCenter.default()
+        
+        // 监听锁屏事件
+        lockScreenObserver = center.addObserver(
+            forName: NSNotification.Name("com.apple.screenIsLocked"),
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.handleScreenLocked()
+            }
+        }
+    }
+    
+    // MARK: - 锁屏/解锁事件处理
+    private func handleScreenLocked() {
+        print("检测到用户锁屏")
+        // 更新应用状态
+        if appState == .inShortRest || appState == .inLongRest {
+            resumeAfterRest()
+            print("锁屏时正在休息，暂停计时器并关闭休息视图")
+        }
+        // 锁屏时关闭所有休息视图
+        dismissAllViews()
+    }
+    
+    
     deinit {
         if let monitor = globalEventMonitor {
             NSEvent.removeMonitor(monitor)
         }
+        
+        let center = DistributedNotificationCenter.default()
+        
+        if let lockObserver = lockScreenObserver {
+            center.removeObserver(lockObserver)
+            lockScreenObserver = nil
+        }
+        
         stopMainTimer()
     }
 }
