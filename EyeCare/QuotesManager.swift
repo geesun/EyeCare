@@ -201,7 +201,7 @@ class QuotesManager {
         if let content = readCustomQuotesFile() {
             return content
         } else {
-            return ""
+            return defaultQuotes.joined(separator: "\n")
         }
     }
     
