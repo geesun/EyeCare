@@ -31,7 +31,7 @@ class EyeCareManager: ObservableObject {
         }
     }
     
-    @Published var longIntervalMinutes: Int = 30 {
+    @Published var longIntervalMinutes: Int = 90 {
         didSet {
             guard !isLoadingSettings else { return }
             configManager.longIntervalMinutes = longIntervalMinutes

@@ -33,7 +33,7 @@ struct RestView: View {
                     .aspectRatio(contentMode: .fill)
                     .edgesIgnoringSafeArea(.all)
                     .overlay(
-                        Color.black.opacity(0.5) // 添加暗色遮罩以提高文字可读性
+                        Color.black.opacity(0.3) // 添加暗色遮罩以提高文字可读性
                     )
             } else {
                 // 默认背景

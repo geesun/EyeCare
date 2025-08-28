@@ -34,7 +34,7 @@ class AppConfigManager {
     // MARK: - 默认值
     private struct Defaults {
         static let isEnabled = true
-        static let longIntervalMinutes = 30
+        static let longIntervalMinutes = 90
         static let longRestDuration = 5
         static let shortRestEnabled = true
         static let shortRestDuration = 30
