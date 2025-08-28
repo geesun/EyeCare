@@ -114,6 +114,8 @@ class EyeCareManager: ObservableObject {
     
     // 全局事件监控器
     private var globalEventMonitor: Any?
+    private var localEventMonitor: Any?
+    
     // 锁屏检测相关
     private var lockScreenObserver: NSObjectProtocol?
     
@@ -131,8 +133,8 @@ class EyeCareManager: ObservableObject {
     init() {
         loadSettingsFromConfig()
         nextRestSeconds = calculateNextRestTime()
-        setupGlobalEventMonitoring()
-        setupScreenLockMonitoring();
+        setupActivityMonitoring()
+        setupScreenLockMonitoring()
         startMainTimer()
     }
     
@@ -186,22 +188,39 @@ class EyeCareManager: ObservableObject {
     }
     
     // MARK: - 全局事件监控设置
-    private func setupGlobalEventMonitoring() {
-        if let monitor = globalEventMonitor {
-            NSEvent.removeMonitor(monitor)
-        }
-        
-        globalEventMonitor = NSEvent.addGlobalMonitorForEvents(
-            matching: [
-                .mouseMoved, .leftMouseDown, .leftMouseUp, .rightMouseDown,
-                .rightMouseUp, .otherMouseDown, .otherMouseUp, .scrollWheel,
-                .keyDown, .keyUp, .leftMouseDragged, .rightMouseDragged, .otherMouseDragged
-            ]
-        ) { [weak self] _ in
-            DispatchQueue.main.async {
-                self?.updateLastActivityTime()
-            }
-        }
+    private func setupActivityMonitoring() {
+         // 移除现有的监控器
+         if let globalMonitor = globalEventMonitor {
+             NSEvent.removeMonitor(globalMonitor)
+         }
+         if let localMonitor = localEventMonitor {
+             NSEvent.removeMonitor(localMonitor)
+         }
+         
+         let eventMask: NSEvent.EventTypeMask = [
+             .mouseMoved, .leftMouseDown, .leftMouseUp, .rightMouseDown,
+             .rightMouseUp, .otherMouseDown, .otherMouseUp, .scrollWheel,
+             .keyDown, .keyUp, .leftMouseDragged, .rightMouseDragged, .otherMouseDragged
+         ]
+         
+         // 设置全局事件监控器（监控其他应用的事件）
+         globalEventMonitor = NSEvent.addGlobalMonitorForEvents(
+             matching: eventMask
+         ) { [weak self] _ in
+             DispatchQueue.main.async {
+                 self?.updateLastActivityTime()
+             }
+         }
+         
+         // 设置本地事件监控器（监控自己应用的事件）
+         localEventMonitor = NSEvent.addLocalMonitorForEvents(
+             matching: eventMask
+         ) { [weak self] event in
+             DispatchQueue.main.async {
+                 self?.updateLastActivityTime()
+             }
+             return event  // 返回事件继续传递
+         }
     }
     
     // 更新最后活动时间
@@ -477,6 +496,10 @@ class EyeCareManager: ObservableObject {
     deinit {
         if let monitor = globalEventMonitor {
             NSEvent.removeMonitor(monitor)
+        }
+        // 清理本地事件监控器
+        if let localMonitor = localEventMonitor {
+            NSEvent.removeMonitor(localMonitor)
         }
         
         let center = DistributedNotificationCenter.default()
