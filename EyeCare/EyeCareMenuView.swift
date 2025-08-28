@@ -17,13 +17,13 @@ struct EyeCareMenuView: View {
     private let longIntervalOptions = [30, 45, 60, 75, 90, 105, 120]
     
     // 长休息时长选项（分钟）
-    private let longDurationOptions = [ 2, 3, 4, 5, 8, 10]
+    private let longDurationOptions = [ 2, 3, 4, 5, 8, 10, 15]
     
     // 暂停检测时间选项（分钟）
     private let pauseDetectionOptions = [1, 2]
     
     // 停止检测时间选项（分钟）
-    private let stopDetectionOptions = [3, 5, 8]
+    private let stopDetectionOptions = [3, 5, 8, 10]
     
     // 短休息时长选项（秒）
     private let shortDurationOptions = [
@@ -51,6 +51,39 @@ struct EyeCareMenuView: View {
             
             // 只有当主开关启用时才显示其他配置
             if manager.isEnabled {
+                Divider()
+                
+                // 下一个休息信息 - 新增的显示区域
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(LocalizedStrings.nextRestInfo)
+                        .font(.headline)
+                        .foregroundColor(.primary)
+                    
+                    if manager.isNextResetShortRest() {
+                        HStack {
+                            Text(LocalizedStrings.nextRestType)
+                            Spacer()
+                            Text(getNextRestTypeText())
+                                .fontWeight(.medium)
+                                .foregroundColor(getNextRestTypeColor())
+                        }
+                    }
+                    
+                    HStack {
+                        Text(LocalizedStrings.nextRestTime)
+                        Spacer()
+                        Text(manager.statusBarTitle)
+                            .fontWeight(.medium)
+                            .foregroundColor(.secondary)
+                    }
+                }
+                .padding(.vertical, 8)
+                .padding(.horizontal, 12)
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(Color.gray.opacity(0.1))
+                )
+                
                 Divider()
                 
                 // 长休息设置
@@ -267,6 +300,22 @@ struct EyeCareMenuView: View {
         }
         .padding()
         .frame(width: 300)
+    }
+    
+    // 获取下一个休息类型文本
+    private func getNextRestTypeText() -> String {
+        if manager.isNextResetShortRest() {
+            return LocalizedStrings.shortRestType
+           
+        } else {
+            return  LocalizedStrings.longRestType
+        }
+    }
+    
+    // 获取下一个休息类型颜色
+    private func getNextRestTypeColor() -> Color {
+       
+        return manager.isNextResetShortRest() ? .green : .blue
     }
     
     private func showBackgroundConfigWindow() {

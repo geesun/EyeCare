@@ -318,7 +318,7 @@ class EyeCareManager: ObservableObject {
     // MARK: - 触发休息
     private func triggerRest() {
         // 计算当前应该触发哪种休息
-        if shouldTriggerShortRest() {
+        if isNextResetShortRest() {
             // 触发短休息
             appState = .inShortRest
             currentShortRestIndex += 1
@@ -331,7 +331,7 @@ class EyeCareManager: ObservableObject {
     }
     
     // 判断是否应该触发短休息
-    private func shouldTriggerShortRest() -> Bool {
+    func isNextResetShortRest() -> Bool {
         guard shortRestEnabled && shortRestCount > 0 else {
             return false
         }

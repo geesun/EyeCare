@@ -71,6 +71,15 @@ struct LocalizedStrings {
     static let customQuotesSettings = "custom_quotes_settings".localized
     static let customQuotesDescription = "custom_quotes_description".localized
     static let save = "save".localized
-    //static let cancel = "cancel".localized
+    
+    
+    /* Next Rest Info */
+    static let nextRestInfo = "next_rest_info".localized
+    static let nextRestType = "next_rest_type".localized
+    static let nextRestTime = "next_rest_time".localized
+
+    /* Rest Types */
+    static let shortRestType = "short_rest_title".localized
+    static let longRestType = "long_rest_title".localized
     
 }

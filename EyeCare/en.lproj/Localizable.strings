@@ -60,3 +60,12 @@
 "save" = "Save";
 "cancel" = "Cancel";
 
+/* Next Rest Info */
+"next_rest_info" = "Next Rest Info";
+"next_rest_type" = "Next Rest Type:";
+"next_rest_time" = "Next Rest Time:";
+
+/* Rest Types */
+"short_rest_type" = "Short Rest";
+"long_rest_type" = "Long Rest";
+

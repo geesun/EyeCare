@@ -62,3 +62,11 @@
 "save" = "保存";
 "cancel" = "取消";
 
+/* Next Rest Info */
+"next_rest_info" = "下次休息信息";
+"next_rest_type" = "下次休息類型:";
+"next_rest_time" = "下次休息時間:";
+
+/* Rest Types */
+"short_rest_type" = "短休息";
+"long_rest_type" = "長休息";

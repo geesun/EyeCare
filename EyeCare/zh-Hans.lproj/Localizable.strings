@@ -57,3 +57,13 @@
 "custom_quotes_description" = "每行输入一条名言。每条名言会在休息期间随机显示。";
 "save" = "保存";
 "cancel" = "取消";
+
+/* Next Rest Info */
+"next_rest_info" = "下次休息信息";
+"next_rest_type" = "下次休息类型:";
+"next_rest_time" = "下次休息时间:";
+
+/* Rest Types */
+"short_rest_type" = "短休息";
+"long_rest_type" = "长休息";
+
