@@ -15,7 +15,7 @@ Eye Care is a macOS application that helps you take regular breaks to protect yo
 
 ## 📸 Screenshots
 
-![Menubar Interface] (screenshots/menubar.png)
+![Menubar Interface](screenshots/menubar.png)
 
 ## 🚀 Installation
 
