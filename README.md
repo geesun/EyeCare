@@ -35,3 +35,14 @@ Eye Care is a macOS application that helps you take regular breaks to protect yo
 - **Custom Quotes**: Click to add your personalized inspirational quotes 
 - **Custom Backgrounds**: Click to set personalized rest view backgrounds
 
+## Install and Run 
+Since EyeCare is not from the Mac App Store and not signed with an Apple Developer ID, macOS may show “App cannot be opened because it is from an unidentified developer.”
+
+1. Double-click **EyeCare.app** once (it will fail to open).
+2. Open **System Settings → Privacy & Security**.
+3. Scroll down to the **Security** section, and you’ll see a message:
+   *“EyeCare was blocked because it is not from an identified developer.”*
+4. Click **Allow Anyway**, then try to open the app again.
+5. When prompted, confirm with **Open**.
+
+

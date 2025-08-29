@@ -56,12 +56,12 @@ class QuotesConfigWindow: NSWindowController, NSWindowDelegate {
               self.window?.center()
               self.window?.makeKeyAndOrderFront(nil)
               NSApp.activate(ignoringOtherApps: true)
-
           }
       }
     
     // MARK: - NSWindowDelegate
     // 当窗口失去焦点时自动关闭（但排除文件选择对话框的情况）
+    /*
     func windowDidResignKey(_ notification: Notification) {
         // 延迟检查，避免文件选择对话框导致的误关闭
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -69,7 +69,7 @@ class QuotesConfigWindow: NSWindowController, NSWindowDelegate {
             self.closeWindow()
             
         }
-    }
+    }*/
     
     // 当窗口即将关闭时清理资源
     func windowWillClose(_ notification: Notification) {
@@ -86,6 +86,8 @@ struct QuotesConfigView: View {
     // Quotes 文本
     @State private var quotesText: String = ""
     @State private var isSaving = false
+    @State private var isResetting = false
+    @State private var showingResetConfirmation = false
     
     var body: some View {
          VStack(spacing: 20) {
@@ -131,6 +133,27 @@ struct QuotesConfigView: View {
                  
                  Spacer()
                  
+                 // 重置按钮 - 添加确认对话框
+                 Button(LocalizedStrings.reset) {
+                     showingResetConfirmation = true  // 显示确认对话框
+                 }
+                 .padding(.horizontal, 30)
+                 .padding(.vertical, 12)
+                 .background(Color.clear)
+                 .foregroundColor(.red)
+                 .cornerRadius(8)
+                 .disabled(isResetting || isSaving)
+                 .alert(LocalizedStrings.confirmReset, isPresented: $showingResetConfirmation) {
+
+                     Button(LocalizedStrings.reset, role: .destructive) {
+                         resetToDefault()
+                     }
+                 } message: {
+                     Text(LocalizedStrings.resetConfirmationMessage)
+                 }
+                 
+                 Spacer()
+                 
                  // 保存按钮
                  Button(LocalizedStrings.save) {
                      saveQuotes()
@@ -140,7 +163,7 @@ struct QuotesConfigView: View {
                  .background(Color.clear)  // 透明背景
                  .foregroundColor(.blue)
                  .cornerRadius(8)
-                 .disabled(isSaving)
+                 .disabled(isResetting || isSaving)
              }
              .padding(.horizontal, 30)
              .padding(.bottom, 20)
@@ -170,6 +193,21 @@ struct QuotesConfigView: View {
          }
      }
     
-
+    // 重置为默认设置
+    private func resetToDefault() {
+        isResetting = true
+        showingResetConfirmation = false  // 关闭确认对话框
+        
+        if QuotesManager.shared.resetCustomQuotesToDefault() {
+            // 重置成功后重新加载并关闭窗口
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.quotesText = QuotesManager.shared.loadCustomQuotesFromFile()  // 重新加载默认内容
+                self.isResetting = false
+                //self.onClose()
+            }
+        } else {
+            isResetting = false
+        }
+    }
 }
 

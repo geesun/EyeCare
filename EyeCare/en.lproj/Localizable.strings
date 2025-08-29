@@ -59,6 +59,10 @@
 "custom_quotes_description" = "Enter one quote per line. Each quote will be displayed randomly during rest periods.";
 "save" = "Save";
 "cancel" = "Cancel";
+"reset" = "Reset";
+"confirm_reset" = "Confirm Reset";
+"reset_confirmation_message" = "Are you sure you want to reset all custom quotes to default? This action cannot be undone.";
+
 
 /* Next Rest Info */
 "next_rest_info" = "Next Rest Info";

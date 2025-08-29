@@ -195,6 +195,29 @@ class QuotesManager {
         }
     }
     
+    // 重置自定义 Quotes 为默认设置
+    func resetCustomQuotesToDefault() -> Bool {
+        let fileManager = FileManager.default
+        let currentDirectory = fileManager.currentDirectoryPath
+        let quotesFilePath = "\(currentDirectory)/custom_quotes.txt"
+        
+        do {
+            // 删除自定义 Quotes 文件
+            if fileManager.fileExists(atPath: quotesFilePath) {
+                try fileManager.removeItem(atPath: quotesFilePath)
+                print("成功删除自定义名言文件: \(quotesFilePath)")
+            }
+            
+            // 重新加载（此时会使用默认 Quotes）
+            reloadCustomQuotes()
+            
+            return true
+        } catch {
+            print("删除自定义名言文件失败: \(error)")
+            return false
+        }
+    }
+    
     // 保存自定义 Quotes 到文件
     func saveCustomQuotesToFile(_ content: String) -> Bool {
         let fileManager = FileManager.default

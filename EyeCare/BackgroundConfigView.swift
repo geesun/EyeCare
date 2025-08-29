@@ -82,6 +82,7 @@ class BackgroundConfigWindow: NSWindowController, NSWindowDelegate {
     
     // MARK: - NSWindowDelegate
     // 当窗口失去焦点时自动关闭（但排除文件选择对话框的情况）
+    /*
     func windowDidResignKey(_ notification: Notification) {
         // 延迟检查，避免文件选择对话框导致的误关闭
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -92,6 +93,7 @@ class BackgroundConfigWindow: NSWindowController, NSWindowDelegate {
             }
         }
     }
+    */
     
     // 当窗口即将关闭时清理资源
     func windowWillClose(_ notification: Notification) {
