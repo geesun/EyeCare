@@ -15,7 +15,16 @@ Eye Care is a macOS application that helps you take regular breaks to protect yo
 
 ## 📸 Screenshots
 
+### Menubar Interface
+
 ![Menubar Interface](screenshots/menubar.png)
+
+### Background Configuration
+
+![background](screenshots/background.png)
+
+### Rest View
+![View](screenshots/view.png)
 
 ## 🚀 Installation
 
@@ -54,5 +63,5 @@ Since EyeCare is not from the Mac App Store and not signed with an Apple Develop
 
 ## 📄 License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+The software is provided under a BSD-3-Clause license
 

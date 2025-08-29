@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2025, Qixiang Xu. All rights reserved.
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
 import Foundation
 
 // MARK: - 应用配置管理器
