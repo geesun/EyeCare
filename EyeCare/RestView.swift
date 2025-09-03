@@ -90,12 +90,12 @@ struct RestView: View {
                     onSkip()        // 调用跳过回调
                 }) {
                     Text(LocalizedStrings.skipThisTime)
-                        .font(.title3)
-                        .padding(.horizontal, 30)
-                        .padding(.vertical, 12)
-                        .background(Color.white.opacity(0.2))
+                        .font(.caption)
+                        .padding(.horizontal, 5)
+                        .padding(.vertical, 5)
+                        .background(Color.white.opacity(0.1))
                         .foregroundColor(.white)
-                        .cornerRadius(10)
+                        .cornerRadius(5)
                 }
                 .buttonStyle(PlainButtonStyle())
             }
